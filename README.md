@@ -7,9 +7,9 @@
 
 ## Supported transformations
 ### TGS
-- TGS &rarr; PNG (first framge, all frames, N frame)
-- TGS &rarr; JPEG (first framge, all frames, N frame)
-- TGS &rarr; WEBP (first framge, all frames, N frame)
+- TGS &rarr; PNG (first framge, all frames, N frame, frames range)
+- TGS &rarr; JPEG (first framge, all frames, N frame, frames range)
+- TGS &rarr; WEBP (first framge, all frames, N frame, frames range)
 - TGS &rarr; Lottie.JSON
 - TGS &rarr; GIF
 - TGS &rarr; WEBM
@@ -22,6 +22,6 @@
 ### WEBM
 - WEBM &rarr; MP4 **[WIP]**
 - WEBM &rarr; GIF **[WIP]**
-- WEBM &rarr; PNG (first framge, all frames, N frame) **[WIP]**
-- WEBM &rarr; JPEG (first framge, all frames, N frame) **[WIP]**
-- WEBM &rarr; WEBP (first framge, all frames, N frame) **[WIP]**
+- WEBM &rarr; PNG (first framge, all frames, N frame, frames range) **[WIP]**
+- WEBM &rarr; JPEG (first framge, all frames, N frame, frames range) **[WIP]**
+- WEBM &rarr; WEBP (first framge, all frames, N frame, frames range) **[WIP]**
