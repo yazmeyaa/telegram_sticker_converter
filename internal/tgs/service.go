@@ -17,7 +17,7 @@ import (
 	"github.com/yazmeyaa/telegram_sticker_converter/internal/converter"
 )
 
-func (t tgsServiceImpl) Transform(ctx context.Context, in io.Reader, out io.Writer, opts converter.TransformOptions) error {
+func (t tgsServiceImpl) Transform(ctx context.Context, in io.Reader, out io.Writer, opts converter.TGSTransformOptions) error {
 	data, err := io.ReadAll(in)
 	if err != nil {
 		return err
@@ -57,7 +57,7 @@ func (t tgsServiceImpl) Transform(ctx context.Context, in io.Reader, out io.Writ
 	return converter.ErrUnknownFormat
 }
 
-func (t tgsServiceImpl) processFrames(ctx context.Context, anim rlottie.Lottie_Animation, out io.Writer, opts converter.TransformOptions) error {
+func (t tgsServiceImpl) processFrames(ctx context.Context, anim rlottie.Lottie_Animation, out io.Writer, opts converter.TGSTransformOptions) error {
 	width := uint(opts.ResizeWidth)
 	height := uint(opts.ResizeHeight)
 
@@ -111,7 +111,7 @@ var (
 	}
 )
 
-func (t tgsServiceImpl) processVideo(ctx context.Context, anim rlottie.Lottie_Animation, out io.Writer, opts converter.TransformOptions) error {
+func (t tgsServiceImpl) processVideo(ctx context.Context, anim rlottie.Lottie_Animation, out io.Writer, opts converter.TGSTransformOptions) error {
 	totalFrames := rlottie.LottieAnimationGetTotalframe(anim)
 	frameRate := rlottie.LottieAnimationGetFramerate(anim)
 	var preset ffmpeg_go.KwArgs
@@ -168,7 +168,7 @@ func BGRAtoRGBA(buf []byte) {
 	}
 }
 
-func (t tgsServiceImpl) makeSingleImage(ctx context.Context, frameBuffer []byte, out io.Writer, opts converter.TransformOptions) error {
+func (t tgsServiceImpl) makeSingleImage(ctx context.Context, frameBuffer []byte, out io.Writer, opts converter.TGSTransformOptions) error {
 	BGRAtoRGBA(frameBuffer)
 	img := &image.RGBA{
 		Pix:    frameBuffer,
@@ -190,7 +190,7 @@ func (t tgsServiceImpl) makeSingleImage(ctx context.Context, frameBuffer []byte,
 	return converter.ErrUnknownFormat
 }
 
-func (t tgsServiceImpl) makeAllImages(ctx context.Context, anim rlottie.Lottie_Animation, frameBuffer []byte, out io.Writer, opts converter.TransformOptions) error {
+func (t tgsServiceImpl) makeAllImages(ctx context.Context, anim rlottie.Lottie_Animation, frameBuffer []byte, out io.Writer, opts converter.TGSTransformOptions) error {
 	totalFrames := rlottie.LottieAnimationGetTotalframe(anim)
 	archive := zip.NewWriter(out)
 	defer archive.Close()

@@ -58,7 +58,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	opts := converter.TransformOptions{
+	opts := converter.TGSTransformOptions{
 		Format:       converter.OutputFormat(*format),
 		Frame:        frameSel,
 		FrameIndex:   *frameIndex,
@@ -66,7 +66,6 @@ func main() {
 		ResizeWidth:  *resizeW,
 		ResizeHeight: *resizeH,
 	}
-	fmt.Fprintf(os.Stdout, "opts: %+v\n", opts)
 
 	service := converter.TGSConverterService(tgs.NewService())
 	if err := service.Transform(context.Background(), in, out, opts); err != nil {

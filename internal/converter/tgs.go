@@ -13,6 +13,7 @@ const (
 	FrameFirst FrameSelector = iota
 	FrameAll
 	FrameN
+	FrameRange
 )
 
 var (
@@ -29,15 +30,16 @@ const (
 	FormatLottie OutputFormat = "lottie"
 )
 
-type TransformOptions struct {
+type TGSTransformOptions struct {
 	Format       OutputFormat
 	Frame        FrameSelector
 	FrameIndex   int
+	FrameOffset  int
 	Qualtity     int
 	ResizeWidth  int
 	ResizeHeight int
 }
 
 type TGSConverterService interface {
-	Transform(ctx context.Context, data io.Reader, out io.Writer, opts TransformOptions) error
+	Transform(ctx context.Context, data io.Reader, out io.Writer, opts TGSTransformOptions) error
 }

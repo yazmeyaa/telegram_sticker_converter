@@ -22,3 +22,6 @@
 ### WEBM
 - WEBM &rarr; MP4 **[WIP]**
 - WEBM &rarr; GIF **[WIP]**
+- WEBM &rarr; PNG (first framge, all frames, N frame) **[WIP]**
+- WEBM &rarr; JPEG (first framge, all frames, N frame) **[WIP]**
+- WEBM &rarr; WEBP (first framge, all frames, N frame) **[WIP]**
