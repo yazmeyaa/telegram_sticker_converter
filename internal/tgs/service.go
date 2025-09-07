@@ -150,6 +150,7 @@ func (t tgsServiceImpl) processVideo(ctx context.Context, anim rlottie.Lottie_An
 			"s":       fmt.Sprintf("%dx%d", opts.ResizeWidth, opts.ResizeHeight),
 			"r":       frameRate,
 		}).
+		Silent(true).
 		Output("pipe:1", preset).
 		WithInput(r).
 		WithOutput(out).
