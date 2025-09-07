@@ -3,7 +3,7 @@
 ## Supported formats
 - TGS
 - WEBP **[WIP]**
-- WEBM **[WIP]**
+- WEBM 
 
 ## Supported transformations
 ### TGS
