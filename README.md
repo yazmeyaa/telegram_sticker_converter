@@ -1,9 +1,15 @@
 # Telegram sticker converter
 
+## System requirements
+- ffmpeg
+
+## Build requirements
+- Go 1.24
+
 ## Supported formats
 - TGS
-- WEBP **[WIP]**
-- WEBM 
+- WEBP
+- WEBM
 
 ## Supported transformations
 ### TGS
@@ -16,12 +22,13 @@
 - TGS &rarr; MP4
 
 ### WEBP
-- WEBP &rarr; PNG **[WIP]**
-- WEBP &rarr; JPEG **[WIP]**
+- WEBP &rarr; PNG
+- WEBP &rarr; JPEG
 
 ### WEBM
 - WEBM &rarr; MP4
-- WEBM &rarr; GIF 
+- WEBM &rarr; GIF
 - WEBM &rarr; PNG (first framge, all frames, N frame, frames range)
 - WEBM &rarr; JPEG (first framge, all frames, N frame, frames range)
 - WEBM &rarr; WEBP (first framge, all frames, N frame, frames range)
+- 
