@@ -31,4 +31,3 @@
 - WEBM &rarr; PNG (first framge, all frames, N frame, frames range)
 - WEBM &rarr; JPEG (first framge, all frames, N frame, frames range)
 - WEBM &rarr; WEBP (first framge, all frames, N frame, frames range)
-- 

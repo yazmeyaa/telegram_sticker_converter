@@ -1,4 +1,4 @@
-package wepb
+package webp
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 	"image/png"
 	"io"
 
-	"github.com/yazmeyaa/telegram_sticker_converter/internal/converter"
+	converter "github.com/yazmeyaa/telegram_sticker_converter"
 	"golang.org/x/image/webp"
 )
 

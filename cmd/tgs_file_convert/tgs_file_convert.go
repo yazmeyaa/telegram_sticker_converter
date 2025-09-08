@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/yazmeyaa/telegram_sticker_converter/internal/converter"
-	"github.com/yazmeyaa/telegram_sticker_converter/internal/tgs"
+	converter "github.com/yazmeyaa/telegram_sticker_converter"
+	"github.com/yazmeyaa/telegram_sticker_converter/tgs"
 )
 
 func main() {

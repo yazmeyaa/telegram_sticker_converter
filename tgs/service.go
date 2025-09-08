@@ -14,7 +14,7 @@ import (
 
 	"github.com/arugaz/go-rlottie"
 	ffmpeg_go "github.com/u2takey/ffmpeg-go"
-	"github.com/yazmeyaa/telegram_sticker_converter/internal/converter"
+	converter "github.com/yazmeyaa/telegram_sticker_converter"
 )
 
 func (t tgsServiceImpl) Transform(ctx context.Context, in io.Reader, out io.Writer, opts converter.TGSTransformOptions) error {

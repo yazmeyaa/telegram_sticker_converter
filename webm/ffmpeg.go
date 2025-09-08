@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	ffmpeg_go "github.com/u2takey/ffmpeg-go"
-	"github.com/yazmeyaa/telegram_sticker_converter/internal/converter"
+	converter "github.com/yazmeyaa/telegram_sticker_converter"
 )
 
 var (

@@ -5,7 +5,7 @@ import (
 	"errors"
 	"io"
 
-	"github.com/yazmeyaa/telegram_sticker_converter/internal/converter"
+	converter "github.com/yazmeyaa/telegram_sticker_converter"
 )
 
 type frameScanner struct {
