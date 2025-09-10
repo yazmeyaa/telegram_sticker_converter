@@ -15,6 +15,6 @@ type TGSTransformOptions struct {
 	ResizeHeight int
 }
 
-type TGSConverterService interface {
+type TGSConverter interface {
 	Transform(ctx context.Context, data io.Reader, out io.Writer, opts TGSTransformOptions) error
 }

@@ -11,13 +11,13 @@ import (
 	converter "github.com/yazmeyaa/telegram_sticker_converter"
 )
 
-type webmService struct{}
+type webmConverter struct{}
 
-func NewService() *webmService {
-	return &webmService{}
+func NewConverter() *webmConverter {
+	return &webmConverter{}
 }
 
-func (ws webmService) Transform(ctx context.Context, in io.Reader, out io.Writer, opts converter.WEBMTransformOptions) error {
+func (ws webmConverter) Transform(ctx context.Context, in io.Reader, out io.Writer, opts converter.WEBMTransformOptions) error {
 	rIn, wIn := io.Pipe()
 	rOut, wOut := io.Pipe()
 

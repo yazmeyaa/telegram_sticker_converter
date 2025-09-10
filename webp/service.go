@@ -10,10 +10,10 @@ import (
 	"golang.org/x/image/webp"
 )
 
-type webpConverterService struct{}
+type webpConverter struct{}
 
-// Transform implements converter.WebpConverterService.
-func (w webpConverterService) Transform(ctx context.Context, in io.Reader, out io.Writer, opts converter.WebpTransformOptions) error {
+// Transform implements converter.WebpConverter.
+func (w webpConverter) Transform(ctx context.Context, in io.Reader, out io.Writer, opts converter.WebpTransformOptions) error {
 	i, err := webp.Decode(in)
 	if err != nil {
 		return err
@@ -29,8 +29,8 @@ func (w webpConverterService) Transform(ctx context.Context, in io.Reader, out i
 	return converter.ErrUnknownFormat
 }
 
-var _ converter.WebpConverterService = webpConverterService{}
+var _ converter.WebpConverter = webpConverter{}
 
-func NewService() *webpConverterService {
-	return &webpConverterService{}
+func NewConverter() *webpConverter {
+	return &webpConverter{}
 }

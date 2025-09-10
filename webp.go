@@ -9,6 +9,6 @@ type WebpTransformOptions struct {
 	Format OutputFormat
 }
 
-type WebpConverterService interface {
+type WebpConverter interface {
 	Transform(ctx context.Context, in io.Reader, out io.Writer, opts WebpTransformOptions) error
 }

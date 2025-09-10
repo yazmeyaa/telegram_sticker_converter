@@ -65,8 +65,8 @@ func main() {
 		Height:     *resizeH,
 	}
 
-	service := converter.WEBMConverter(webm.NewService())
-	if err := service.Transform(context.Background(), in, out, opts); err != nil {
+	converter := converter.WEBMConverter(webm.NewConverter())
+	if err := converter.Transform(context.Background(), in, out, opts); err != nil {
 		fmt.Fprintf(os.Stderr, "transform failed: %v\n", err)
 		os.Exit(1)
 	}
