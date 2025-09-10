@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	converter "github.com/yazmeyaa/telegram_sticker_converter"
 	"github.com/yazmeyaa/telegram_sticker_converter/tgs"
@@ -31,7 +32,7 @@ func main() {
 	inputType := inputParts[0]
 	var in *os.File
 	if inputType == "file" {
-		input, err := os.Open(*input)
+		input, err := os.Open(inputParts[1])
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "error opening file: %v\n", err)
 			os.Exit(1)
@@ -82,11 +83,13 @@ func main() {
 	}
 
 	converter := tgs.NewConverter()
-
+	start := time.Now()
 	if err := converter.Transform(context.Background(), in, out, opts); err != nil {
 		fmt.Fprintf(os.Stderr, "transform failed: %v\n", err)
 		os.Exit(1)
 	}
+	duration := time.Since(start)
+	fmt.Printf("Complete in %d ms\n", duration.Milliseconds())
 
 	fmt.Println("success:", *outPath)
 }

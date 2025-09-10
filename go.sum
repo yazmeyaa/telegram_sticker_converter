@@ -1,5 +1,3 @@
-github.com/arugaz/go-rlottie v0.1.0 h1:/rQaoBoSEG2T+PW56ANvpkgOHdYYtGZpvxzjI6touZ8=
-github.com/arugaz/go-rlottie v0.1.0/go.mod h1:m50xy50q5U9ngFIBJja9m09vFhvfw6cxkRiqIxjKeWQ=
 github.com/aws/aws-sdk-go v1.38.20/go.mod h1:hcU610XS61/+aQV88ixoOzUoG7v3b31pl2zKMmprdro=
 github.com/aws/aws-sdk-go v1.55.8 h1:JRmEUbU52aJQZ2AjX4q4Wu7t4uZjOu71uyNmaWlUkJQ=
 github.com/aws/aws-sdk-go v1.55.8/go.mod h1:ZkViS9AqA6otK+JBBNH2++sx1sgxrPKcSzPPvQkUtXk=
@@ -39,6 +37,8 @@ github.com/u2takey/ffmpeg-go v0.5.0 h1:r7d86XuL7uLWJ5mzSeQ03uvjfIhiJYvsRAJFCW4uk
 github.com/u2takey/ffmpeg-go v0.5.0/go.mod h1:ruZWkvC1FEiUNjmROowOAps3ZcWxEiOpFoHCvk97kGc=
 github.com/u2takey/go-utils v0.3.1 h1:TaQTgmEZZeDHQFYfd+AdUT1cT4QJgJn/XVPELhHw4ys=
 github.com/u2takey/go-utils v0.3.1/go.mod h1:6e+v5vEZ/6gu12w/DC2ixZdZtCrNokVxD0JUklcqdCs=
+github.com/yazmeyaa/go-rlottie v1.0.3 h1:md1ptW6ZWEv9U6YpC/kg2QbQQoIhJcHik4U9+WAGNyc=
+github.com/yazmeyaa/go-rlottie v1.0.3/go.mod h1:Ci2En07mkAOGiTMq5/js/AkTwH6q/ov/nA4lBkkUoB8=
 gocv.io/x/gocv v0.25.0/go.mod h1:Rar2PS6DV+T4FL+PM535EImD/h13hGVaHhnCu1xarBs=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=

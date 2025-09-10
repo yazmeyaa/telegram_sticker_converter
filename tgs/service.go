@@ -12,8 +12,8 @@ import (
 	"image/png"
 	"io"
 
-	"github.com/arugaz/go-rlottie"
 	ffmpeg_go "github.com/u2takey/ffmpeg-go"
+	"github.com/yazmeyaa/go-rlottie"
 	converter "github.com/yazmeyaa/telegram_sticker_converter"
 )
 

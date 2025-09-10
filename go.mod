@@ -3,8 +3,8 @@ module github.com/yazmeyaa/telegram_sticker_converter
 go 1.24.6
 
 require (
-	github.com/arugaz/go-rlottie v0.1.0
 	github.com/u2takey/ffmpeg-go v0.5.0
+	github.com/yazmeyaa/go-rlottie v1.0.3
 	golang.org/x/image v0.30.0
 )
 
