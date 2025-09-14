@@ -38,7 +38,7 @@ func (t tgsConverterImpl) Transform(ctx context.Context, in io.Reader, out io.Wr
 		return err
 	}
 
-	anim := rlottie.LottieAnimationFromData(buf.String(), "", "")
+	anim := rlottie.LottieAnimationFromData(buf.String(), opts.CacheKey, "")
 	defer rlottie.LottieAnimationDestroy(anim)
 
 	width, height := rlottie.LottieAnimationGetSize(anim)

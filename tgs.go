@@ -13,6 +13,7 @@ type TGSTransformOptions struct {
 	Qualtity     int
 	ResizeWidth  int
 	ResizeHeight int
+	CacheKey     string
 }
 
 type TGSConverter interface {
