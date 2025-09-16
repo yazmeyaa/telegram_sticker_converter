@@ -102,13 +102,14 @@ var (
 		"deadline": "realtime",
 	}
 	PresetMP4 = ffmpeg_go.KwArgs{
-		"vcodec":   "libx264",
-		"format":   "mp4",
-		"pix_fmt":  "yuv420p",
-		"movflags": "frag_keyframe+empty_moov",
+		"c:v":      "libx264",
 		"preset":   "ultrafast",
+		"pix_fmt":  "yuv420p",
+		"c:a":      "aac",
+		"shortest": "",
+		"movflags": "frag_keyframe+empty_moov",
 		"tune":     "zerolatency",
-	}
+		"f":        "mp4"}
 )
 
 func (t tgsConverterImpl) processVideo(ctx context.Context, anim rlottie.Lottie_Animation, out io.Writer, opts converter.TGSTransformOptions) error {
@@ -143,19 +144,34 @@ func (t tgsConverterImpl) processVideo(ctx context.Context, anim rlottie.Lottie_
 		w.Close()
 	}()
 
-	err := ffmpeg_go.
-		Input("pipe:0", ffmpeg_go.KwArgs{
-			"format":  "rawvideo",
-			"pix_fmt": "bgra",
-			"s":       fmt.Sprintf("%dx%d", opts.ResizeWidth, opts.ResizeHeight),
-			"r":       frameRate,
-		}).
-		Silent(true).
-		Output("pipe:1", preset).
+	inputVideo := ffmpeg_go.Input("pipe:0", ffmpeg_go.KwArgs{
+		"format":  "rawvideo",
+		"pix_fmt": "bgra",
+		"s":       fmt.Sprintf("%dx%d", opts.ResizeWidth, opts.ResizeHeight),
+		"r":       frameRate,
+	})
+
+	var output *ffmpeg_go.Stream
+
+	switch opts.Format {
+	case converter.FormatMP4:
+		inputAudio := ffmpeg_go.Input("anullsrc=channel_layout=stereo:sample_rate=44100",
+			ffmpeg_go.KwArgs{"f": "lavfi"})
+
+		output = ffmpeg_go.Output(
+			[]*ffmpeg_go.Stream{inputVideo, inputAudio},
+			"pipe:1",
+			preset,
+		)
+
+	default:
+		output = inputVideo.Output("pipe:1", preset)
+	}
+
+	err := output.
 		WithInput(r).
 		WithOutput(out).
 		Run()
-
 	if err != nil {
 		return err
 	}
