@@ -103,13 +103,14 @@ var (
 	}
 	PresetMP4 = ffmpeg_go.KwArgs{
 		"c:v":      "libx264",
-		"preset":   "ultrafast",
+		"f":        "mp4",
 		"pix_fmt":  "yuv420p",
+		"movflags": "frag_keyframe+empty_moov",
+		"preset":   "ultrafast",
+		"tune":     "zerolatency",
 		"c:a":      "aac",
 		"shortest": "",
-		"movflags": "frag_keyframe+empty_moov",
-		"tune":     "zerolatency",
-		"f":        "mp4"}
+	}
 )
 
 func (t tgsConverterImpl) processVideo(ctx context.Context, anim rlottie.Lottie_Animation, out io.Writer, opts converter.TGSTransformOptions) error {
@@ -171,6 +172,7 @@ func (t tgsConverterImpl) processVideo(ctx context.Context, anim rlottie.Lottie_
 	err := output.
 		WithInput(r).
 		WithOutput(out).
+		Silent(true).
 		Run()
 	if err != nil {
 		return err

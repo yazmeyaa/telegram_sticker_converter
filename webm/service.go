@@ -31,21 +31,39 @@ func (ws webmConverter) Transform(ctx context.Context, in io.Reader, out io.Writ
 		return err
 	}
 
-	stream := ffmpeg_go.
-		Input("pipe:0", ffmpeg_go.KwArgs{
-			"f": "webm",
-		}).
-		Silent(true).
-		Output("pipe:1", preset).
-		WithInput(rIn).
-		WithOutput(wOut)
+	inputVideo := ffmpeg_go.
+		Input("pipe:0").
+		Silent(true)
+
+	var output *ffmpeg_go.Stream
+
+	switch opts.Format {
+	case converter.FormatMP4:
+		inputAudio := ffmpeg_go.Input(
+			"anullsrc=channel_layout=stereo:sample_rate=44100",
+			ffmpeg_go.KwArgs{"f": "lavfi"},
+		)
+
+		output = ffmpeg_go.Output(
+			[]*ffmpeg_go.Stream{inputVideo, inputAudio},
+			"pipe:1",
+			preset,
+		)
+
+	default:
+		output = inputVideo.Output("pipe:1", preset)
+	}
+
+	output = output.Silent(true).WithInput(rIn).WithOutput(wOut)
 
 	if (opts.Frame == converter.FrameAll || opts.Frame == converter.FrameRange) &&
 		(opts.Format == converter.FormatWEBP || opts.Format == converter.FormatJPEG || opts.Format == converter.FormatPNG) {
 
+		output = output.Silent(true).WithInput(rIn).WithOutput(wOut)
+
 		go func() {
 			defer wOut.Close()
-			_ = stream.Run()
+			_ = output.Run()
 		}()
 
 		zw := zip.NewWriter(out)
@@ -77,8 +95,7 @@ func (ws webmConverter) Transform(ctx context.Context, in io.Reader, out io.Writ
 		return nil
 	}
 
-	defer wOut.Close()
-	if err := stream.WithOutput(out).Run(); err != nil {
+	if err := output.WithInput(rIn).WithOutput(out).Run(); err != nil {
 		return err
 	}
 

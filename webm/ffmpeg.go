@@ -15,6 +15,8 @@ var (
 		"movflags": "frag_keyframe+empty_moov",
 		"preset":   "ultrafast",
 		"tune":     "zerolatency",
+		"c:a":      "aac",
+		"shortest": "",
 	}
 
 	PresetPNG = ffmpeg_go.KwArgs{
